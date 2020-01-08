@@ -11,6 +11,20 @@ class Timer extends Component {
   }
 
   //Your code here
+  componentDidUpdate() {
+    this.timer.current.style.color =
+  "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+
+  /// should C U needs to return true or false
+  /// so, if the time is same as nextTime then there is no need to update
+  /// otherwise, they're different so update away
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    } 
+    return true 
+  }
 
   componentDidMount() {
     this.interval = setInterval(
